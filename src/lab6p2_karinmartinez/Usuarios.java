@@ -9,7 +9,8 @@ public class Usuarios {
     public String nombre,apellido, usuario, contraseña;
     public Date nacimiento = new Date();
     public Color color;
-    public ArrayList <Pokedex> pokedex=new ArrayList();;
+    public ArrayList <Pokedex> pokedex=new ArrayList();
+    
     public Usuarios() {
     }
 

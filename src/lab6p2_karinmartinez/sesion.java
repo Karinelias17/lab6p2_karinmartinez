@@ -127,6 +127,7 @@ public class sesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
  
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+   
         ArrayList <Usuarios> usuarios =new ArrayList();
         
         Menu a =new Menu();
@@ -134,6 +135,7 @@ public class sesion extends javax.swing.JFrame {
         usuario1= txtusuario.getText();
         contra1= txtcontra.getText();
         usuarios = f.getUsuarios();
+        
         if (usuarios.size()==0){
             JOptionPane.showMessageDialog(null, "No hay usuarios registrados");
         }else{

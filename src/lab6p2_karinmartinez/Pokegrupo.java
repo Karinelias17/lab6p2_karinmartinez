@@ -12,11 +12,12 @@ public class Pokegrupo {
     public Pokegrupo() {
     }
 
-    public Pokegrupo(String nombre, String lider, String tipo, Date creacion) {
+    public Pokegrupo(String nombre, String lider, String tipo,ArrayList <Usuarios> miembros, Date creacion) {
         this.nombre = nombre;
         this.lider = lider;
         this.tipo = tipo;
         this.creacion = creacion;
+        this.miembros = miembros;
     }
 
     public String getNombre() {
