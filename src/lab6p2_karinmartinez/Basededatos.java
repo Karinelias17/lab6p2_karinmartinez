@@ -11,6 +11,7 @@ public class Basededatos {
     public ArrayList <Pokemon> pokemones = new ArrayList();
     public ArrayList <Pokegrupo> pokegrupos = new ArrayList();
     public ArrayList <Pokedex> pokedex=new ArrayList();
+    public ArrayList <Usuarios> miembros=new ArrayList();
     public String ingresado;
 
     
@@ -63,6 +64,16 @@ public class Basededatos {
         color = Color.RED;
         nacimiento=new Date();
         usuarios.add(new Usuarios(nombre,apellido,usuario,contraseña,color,nacimiento,pokedex));
+        Date creacion =new Date();
+        pokegrupos.add(new Pokegrupo("alpha","karin17","Novato",usuarios,creacion));
+    }
+
+    public ArrayList<Usuarios> getMiembros() {
+        return miembros;
+    }
+
+    public void setMiembros(ArrayList<Usuarios> miembros) {
+        this.miembros = miembros;
     }
 
     public String getIngresado() {

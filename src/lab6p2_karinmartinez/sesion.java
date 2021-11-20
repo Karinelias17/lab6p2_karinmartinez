@@ -127,7 +127,7 @@ public class sesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
  
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   
+        f.pordefecto();
         ArrayList <Usuarios> usuarios =new ArrayList();
         
         Menu a =new Menu();
@@ -145,8 +145,6 @@ public class sesion extends javax.swing.JFrame {
                     a.setVisible(true);
                     this.setVisible(false);
                     JOptionPane.showMessageDialog(null, "Ingresado exitosamente");
-                }else{
-                    JOptionPane.showMessageDialog(null, "El usuario o contraseña es incorrecto");
                 }
             }
         }

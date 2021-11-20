@@ -7,6 +7,7 @@ package lab6p2_karinmartinez;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,12 +15,17 @@ import javax.swing.JOptionPane;
  * @author karin
  */
 public class Menu extends javax.swing.JFrame {
-
+    DefaultListModel miembro =new DefaultListModel();
     /**
      * Creates new form Menu
      */
     public Menu() {
         initComponents();
+        ArrayList <Pokegrupo> pokegrupos = new ArrayList(); 
+        pokegrupos=f.getPokegrupos();       
+        jComboBox1.addItem("alpha");  
+        miembro =new DefaultListModel();
+        jmiembros.setModel(miembro);
     }
 
     /**
@@ -43,7 +49,7 @@ public class Menu extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jmiembros = new javax.swing.JList<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
@@ -78,6 +84,11 @@ public class Menu extends javax.swing.JFrame {
         });
 
         jButton2.setText("Unirme");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Crear Pokegrupo:");
 
@@ -90,7 +101,7 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel3.setText("miembros de mi pokegrupo:");
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(jmiembros);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -110,7 +121,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,6 +151,8 @@ public class Menu extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("PokeGrupo", jPanel1);
 
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("JTree");
+        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane2.setViewportView(jTree1);
 
         jButton4.setText("<");
@@ -197,7 +210,7 @@ public class Menu extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 18, Short.MAX_VALUE))
+                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(jTextField4)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
@@ -289,7 +302,11 @@ public class Menu extends javax.swing.JFrame {
     
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         ArrayList <Pokegrupo> pokegrupos = new ArrayList(); 
-        jComboBox1.setModel(new DefaultComboBoxModel(f.getPokegrupos().toArray()));
+        pokegrupos=f.getPokegrupos();
+        for (int i=0; i<pokegrupos.size();i++){        
+            jComboBox1.addItem(pokegrupos.get(i).getNombre());
+            System.out.println(pokegrupos.get(i).getNombre());
+        }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -310,7 +327,30 @@ public class Menu extends javax.swing.JFrame {
         } 
         pokegrupo.add(new Pokegrupo(nombre,lider,tipo,miembros,creacion));
         f.setPokegrupos(pokegrupo);
+        
+        ArrayList <Pokegrupo> pokegrupos = new ArrayList(); 
+        pokegrupos=f.getPokegrupos();
+        for (int i=0; i<pokegrupos.size();i++){        
+            jComboBox1.addItem(pokegrupos.get(i).getNombre());
+            
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ArrayList <Usuarios> miembros = new ArrayList();
+        ArrayList <Pokegrupo> pokegrupos = new ArrayList(); 
+        pokegrupos=f.getPokegrupos();
+        String grupo =(String)jComboBox1.getSelectedItem();
+        miembros =(pokegrupos.get(0).getMiembros());
+        int pos=0;
+        for (int i=0; i< pokegrupos.size();i++){
+            if (grupo == (pokegrupos.get(i).getNombre())){
+                for (int j=0; i< (pokegrupos.get(i).getMiembros().size());j++){
+                    miembro.addElement(miembros.get(j).getNombre());
+                }
+            }
+        }    
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,7 +403,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;
@@ -380,6 +419,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTree jTree1;
+    private javax.swing.JList<String> jmiembros;
     private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
     public Basededatos f =new Basededatos();
